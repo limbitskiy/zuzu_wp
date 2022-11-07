@@ -1,0 +1,420 @@
+/*
+Theme Name: zuzu
+Theme URI: https://wordpress.org/themes/twentytwentytwo/
+Author: jk
+Author URI: https://localhost/
+Description: A theme for zuzumaster.ru
+Requires at least: 5.9
+Tested up to: 6.0
+Requires PHP: 5.6
+Version: 1.2
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: zuzu
+Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments
+
+zuzu WordPress Theme, (C) 2021 WordPress.org
+zuzu is distributed under the terms of the GNU GPL.
+*/
+:root {
+  --accent-gradient: linear-gradient(237.06deg, #FF8087 -9.77%, #D5120A 79.1%);
+  --black-gradient: linear-gradient(90deg, #232526 0%, #414345 100%);
+}
+
+/*
+ * Font smoothing.
+ * This is a niche setting that will not be available via Global Styles.
+ * https://github.com/WordPress/gutenberg/issues/35934
+ */
+body {
+  font-family: "Montserrat", sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  color: #222;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/*
+ * Text and navigation link styles.
+ * Necessary until the following issue is resolved in Gutenberg:
+ * https://github.com/WordPress/gutenberg/issues/27075
+ */
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+a:hover,
+a:focus {
+  -webkit-text-decoration-style: dashed;
+          text-decoration-style: dashed;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 50px;
+  margin-block: 3rem;
+  font-weight: 700;
+}
+
+/*
+ * General
+ */
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.container-small {
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.zuzu-btn {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  display: inline-block;
+  border-radius: 5px;
+  white-space: nowrap;
+  text-align: center;
+  font-weight: 600;
+}
+.zuzu-btn.zuzu-btn-small {
+  padding: 1em 2em;
+}
+.zuzu-btn.zuzu-btn-medium {
+  padding: 1em 6em;
+}
+.zuzu-btn.zuzu-btn-large {
+  padding: 2em 6em;
+}
+.zuzu-btn.zuzu-btn-accent {
+  background: var(--accent-gradient);
+}
+.zuzu-btn.zuzu-btn-white {
+  background-color: white;
+  color: #222;
+}
+
+.hero-bg {
+  width: 100vw;
+  height: 98vh;
+  position: absolute;
+  z-index: -1;
+}
+
+.stanok-bg {
+  position: absolute;
+  right: -30%;
+  top: -10%;
+}
+
+.section-header {
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.zuzu-list {
+  margin-block: 3rem;
+}
+
+/*
+ * Typography.
+ */
+.text-small {
+  font-size: 12px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-black {
+  color: #222;
+}
+
+.text-white {
+  color: #fff;
+}
+
+/*
+ * Spacing.
+ */
+.mt-50 {
+  margin-top: 50px;
+}
+
+/*
+ * Header
+ */
+header {
+  padding-block: 3rem;
+}
+header > .container:first-child {
+  display: grid;
+  grid-template-columns: 1fr 3fr 3fr 2.5fr;
+  justify-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+header p {
+  font-size: 1rem;
+  font-weight: 400;
+}
+header img:not(.custom-logo) {
+  width: 25px;
+  height: 25px;
+}
+header .contact-btns {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+header .contact-btns a {
+  background-color: black;
+  display: grid;
+  place-items: center;
+  width: 65px;
+  height: 45px;
+  border-radius: 10px;
+}
+header .contact-btns .contact-btn-telegram {
+  background: linear-gradient(276.34deg, #7ECCFF 9.61%, #4FA1E3 89.6%);
+}
+header .contact-btns .contact-btn-whatsapp {
+  background: linear-gradient(276.34deg, #96EF96 9.61%, #6CCE6C 89.6%);
+}
+header .contact-btns .contact-btn-youtube {
+  background: var(--accent-gradient);
+}
+header .header-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+header .header-cta > * {
+  display: flex;
+}
+header .header-cta p {
+  margin: 0;
+}
+
+/*
+ * Top menu.
+ */
+.top-menu ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  padding: 0;
+  background-color: #fff;
+  margin-top: 0;
+}
+.top-menu ul > li {
+  display: grid;
+  place-items: center;
+  height: 60px;
+  padding-inline: 1rem;
+}
+.top-menu ul > li:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.top-menu ul > li:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.top-menu ul > li > a {
+  text-align: center;
+  color: #222;
+  font-weight: 500;
+}
+.top-menu ul > li.current-menu-item {
+  background: var(--accent-gradient);
+}
+.top-menu ul > li.current-menu-item > a {
+  color: #fff;
+}
+
+/*
+ * Gallery slider.
+ */
+.gallery-slider {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  justify-content: center;
+}
+.gallery-slider > li {
+  width: 185px;
+  height: 150px;
+  background-color: #222;
+  border-radius: 5px;
+}
+
+/*
+ * Separator block.
+ */
+.separator-block {
+  padding-block: 3rem;
+  color: white;
+}
+.separator-block img {
+  width: 30px;
+  height: 30px;
+}
+.separator-block ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+.separator-block ul > li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.separator-block ul > li p:last-child {
+  font-size: 12px;
+  font-weight: 400;
+}
+.separator-block.separator-red {
+  background: var(--accent-gradient);
+}
+.separator-block.separator-black {
+  background: var(--black-gradient);
+}
+
+/*
+ * Posts on the front page.
+ */
+.frontpage-post {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  margin-block: 3rem;
+}
+.frontpage-post > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/*
+ * Price calc.
+ */
+.price-calc {
+  color: white;
+  padding-block: 3rem;
+}
+.price-calc .calc-box {
+  height: 600px;
+  position: relative;
+}
+.price-calc .calc-box .text-small {
+  font-size: 12px;
+  max-width: 336px;
+  line-height: 146.9%;
+  font-weight: 400;
+}
+.price-calc .calc-box .text-small a {
+  color: white;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.price-calc .calc-box img {
+  position: absolute;
+  bottom: 2rem;
+}
+.price-calc .red-frame {
+  -webkit-clip-path: polygon(26% 0, 100% 0, 100% 100%, 0 100%, 0 21%);
+          clip-path: polygon(26% 0, 100% 0, 100% 100%, 0 100%, 0 21%);
+  width: 725px;
+  position: absolute;
+  top: 2rem;
+  right: -20%;
+  border: 5px solid transparent;
+}
+.price-calc .red-frame::before {
+  content: "";
+  width: 105%;
+  height: 105%;
+  background: var(--accent-gradient);
+  display: inline-block;
+  position: absolute;
+  z-index: -1;
+  left: -10px;
+  top: -10px;
+}
+.price-calc .red-frame form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: white;
+  padding: 4rem 6rem;
+  color: #222;
+  font-size: 1rem;
+}
+.price-calc .red-frame form input[type=text] {
+  border: none;
+  border-bottom: 1px solid #222;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 20px;
+}
+.price-calc .red-frame form input[type=text]:focus-visible {
+  outline: none;
+}
+.price-calc .red-frame form input[type=text]::-moz-placeholder {
+  color: black;
+}
+.price-calc .red-frame form input[type=text]:-ms-input-placeholder {
+  color: black;
+}
+.price-calc .red-frame form input[type=text]::placeholder {
+  color: black;
+}
+.price-calc .red-frame form #agreement-checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.price-calc .red-frame form #agreement-checkbox:checked + label::before {
+  border-color: #000000;
+  background-color: #ffffff;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNiAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEzLjA2ODcgMS4zMTg3NkMxMy4zMzEyIDEuMDU4NjQgMTMuNjg1NCAwLjkxMjI0OSAxNC4wNTQ5IDAuOTExMjNDMTQuNDI0NCAwLjkxMDIxIDE0Ljc3OTQgMS4wNTQ2NSAxNS4wNDMyIDEuMzEzMzFDMTUuMzA3MSAxLjU3MTk3IDE1LjQ1ODUgMS45MjQwOCAxNS40NjQ4IDIuMjkzNTFDMTUuNDcxMSAyLjY2Mjk0IDE1LjMzMTcgMy4wMiAxNS4wNzY5IDMuMjg3NTFMNy41OTE4NyAxMi42NDM4QzcuNDYzMjMgMTIuNzgyMyA3LjMwNzk3IDEyLjg5MzUgNy4xMzUzNyAxMi45NzA3QzYuOTYyNzcgMTMuMDQ3OSA2Ljc3NjM4IDEzLjA4OTUgNi41ODczNCAxMy4wOTNDNi4zOTgzMSAxMy4wOTY1IDYuMjEwNTEgMTMuMDYxOCA2LjAzNTE3IDEyLjk5MTFDNS44NTk4MyAxMi45MjAzIDUuNzAwNTYgMTIuODE1IDUuNTY2ODcgMTIuNjgxM0wwLjYwNzQ5OCA3LjcyMDAxQzAuNDY5MzM1IDcuNTkxMjcgMC4zNTg1MTkgNy40MzYwMSAwLjI4MTY1OSA3LjI2MzUyQzAuMjA0Nzk5IDcuMDkxMDIgMC4xNjM0NyA2LjkwNDggMC4xNjAxMzkgNi43MTU5OUMwLjE1NjgwNyA2LjUyNzE3IDAuMTkxNTQxIDYuMzM5NjEgMC4yNjIyNjggNi4xNjQ1MUMwLjMzMjk5NSA1Ljk4OTQxIDAuNDM4MjY2IDUuODMwMzUgMC41NzE4MDEgNS42OTY4MUMwLjcwNTMzNyA1LjU2MzI3IDAuODY0NCA1LjQ1OCAxLjAzOTUgNS4zODcyOEMxLjIxNDYxIDUuMzE2NTUgMS40MDIxNiA1LjI4MTgyIDEuNTkwOTggNS4yODUxNUMxLjc3OTggNS4yODg0OCAxLjk2NjAxIDUuMzI5ODEgMi4xMzg1MSA1LjQwNjY3QzIuMzExMDEgNS40ODM1MyAyLjQ2NjI2IDUuNTk0MzQgMi41OTUgNS43MzI1MUw2LjUyMTI1IDkuNjU2ODhMMTMuMDMzMSAxLjM2MDAxQzEzLjA0NDcgMS4zNDU0OCAxMy4wNTczIDEuMzMxNyAxMy4wNzA2IDEuMzE4NzZIMTMuMDY4N1oiIGZpbGw9IiMyMjIyMjIiLz4KPC9zdmc+Cg==);
+}
+.price-calc .red-frame form #agreement-checkbox + label {
+  display: inline-flex;
+  align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.price-calc .red-frame form #agreement-checkbox + label::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 2px solid #000;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 60% 60%;
+}/*# sourceMappingURL=style.css.map */
