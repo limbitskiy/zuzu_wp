@@ -107,7 +107,7 @@ function get_section_header($text, $color = 'black')
 	echo '<h2 class="section-header text-center text-' . $color . '">' . $text . '</h2>';
 }
 
-function get_zuzu_btn($text, $href, $size, $color)
+function get_zuzu_btn($text, $href, $size = 'large', $color = 'accent')
 {
 	echo '<a class="zuzu-btn zuzu-btn-' . $size . ' zuzu-btn-' . $color . '" href="' . $href . ' ">' . $text . '</a>';
 }

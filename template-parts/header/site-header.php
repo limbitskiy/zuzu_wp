@@ -34,7 +34,7 @@ $wrapper_classes .= has_nav_menu('primary') ? ' has-menu' : '';
 					<a class="contact-btn-youtube" href="<?php echo esc_url($contacts['youtube']); ?>"><?php echo wp_get_attachment_image('247', [25, 25]); ?></a>
 				</div>
 			</div>
-			<div class=" header-cta">
+			<div class="cta">
 				<div>
 					<?php echo wp_get_attachment_image('248', [25, 25]);
 					echo "<p>{$contacts['telephone']}</p>" ?>
@@ -45,7 +45,7 @@ $wrapper_classes .= has_nav_menu('primary') ? ' has-menu' : '';
 					echo "<p>{$contacts['mail']}</p>" ?>
 				</div>
 
-				<a class="zuzu-btn" href="#">Заказать звонок</a>
+				<?php get_zuzu_btn('Заказать звонок', '#', 'small'); ?>
 			</div>
 
 		<?php endif; ?>

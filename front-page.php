@@ -54,13 +54,13 @@ get_header(); ?>
 		<?php get_section_header('Цены на фрезеровку в москве', 'white'); ?>
 
 		<div class="mt-50" style="display: flex; justify-content: space-between">
-			<?php get_zuzu_btn('Калькулятор', '#', 'medium', 'accent'); ?>
+			<?php get_zuzu_btn('Калькулятор', '#', 'medium'); ?>
 			<?php get_zuzu_btn('Прайс-лист', '#', 'medium', 'white'); ?>
 		</div>
 
 		<div class="calc-box mt-50">
 			<p class="text-small">Заполните необходимые поля, чтобы узнать стоимость работы. Для более точного определения стоимости <a href="#">свяжитесь с нами</a></p>
-			<div class="red-frame">
+			<div class="red-form">
 				<form>
 					<input type="text" placeholder="Ваше имя">
 					<input type="text" placeholder="Телефон">
@@ -75,13 +75,123 @@ get_header(); ?>
 			<?php echo wp_get_attachment_image('299', 'large'); ?>
 		</div>
 		<div class="mt-50" style="text-align: center">
-			<?php get_zuzu_btn('ПОЛУЧИТЬ РАСЧЁТ СТОИМОСТИ', '#', 'large', 'accent'); ?>
+			<?php get_zuzu_btn('ПОЛУЧИТЬ РАСЧЁТ СТОИМОСТИ', '#'); ?>
 		</div>
 	</div>
 
 </section>
 
-// echo pprint_r($query['posts']);
+<section>
+	<div class="container">
+		<?php get_section_header('фрезерные работы на чпу в москве'); ?>
+		<p class="text-center">Сегодня большинство материалов обрабатывается на оборудовании с ЧПУ.
+			Компания ZuZuMaster осуществляет фрезерную резку на ЧПУ в Москве и области.</p>
 
+		<div class="grid-three mb-3">
+			<div class="grid-card">
+				<?php echo wp_get_attachment_image('300', 'medium'); ?>
+				<div>
+					<p>Занимаемся проектированием, а также:</p>
+					<p>осуществляем фрезеровку по Вашим чертежам
+						и моделям из любых программ</p>
+				</div>
+			</div>
 
-get_footer();
+			<div class="grid-card">
+				<?php echo wp_get_attachment_image('301', 'medium'); ?>
+				<div>
+					<p>Занимаемся гравировкой, а также:</p>
+					<p>художественным раскроем шпона, инкрустацией, фрезерной резкой наружной рекламы</p>
+				</div>
+			</div>
+
+			<div class="grid-card">
+				<?php echo wp_get_attachment_image('302', 'large'); ?>
+				<div>
+					<p>Сконструируем мебель, а также:</p>
+					<p>предметы интерьера, лестницы
+						и конструкции любой сложности</p>
+				</div>
+			</div>
+		</div>
+
+		<p class="text-center">Обратитесь в нашу компанию прямо сейчас!
+			Обговорим нюансы заказа по почте, телефону WhatsApp, Telegram или в любом другом мессенджере.
+			Вы также можете получить консультацию от опытного сотрудника нашей компании по всем интересующим Вас вопросам. </p>
+
+		<div class="mt-50" style="text-align: center">
+			<?php get_zuzu_btn('ПОЛУЧИТЬ РАСЧЁТ СТОИМОСТИ', '#'); ?>
+		</div>
+
+		<?php get_section_header('порядок заказа'); ?>
+
+		<div class="grid-four mb-3">
+			<div class="grid-card">
+				<?php echo wp_get_attachment_image('303', 'medium'); ?>
+				<div>
+					<?php echo wp_get_attachment_image('308', 'medium'); ?>
+					<p>Обратитесь к нам по контактным телефонам или оставьте заявку на сайте. Наш менеджер оперативно свяжется с вами для обсуждения деталей</p>
+				</div>
+			</div>
+			<div class="grid-card">
+				<?php echo wp_get_attachment_image('303', 'medium'); ?>
+				<div>
+					<?php echo wp_get_attachment_image('309', 'medium'); ?>
+					<p>Составление детального расчёта, подготовка эскиза и утверждение финальной стоимости</p>
+				</div>
+			</div>
+			<div class="grid-card">
+				<?php echo wp_get_attachment_image('303', 'medium'); ?>
+				<div>
+					<?php echo wp_get_attachment_image('310', 'medium'); ?>
+					<p>Изготовление. Приступаем к производству</p>
+				</div>
+			</div>
+			<div class="grid-card">
+				<?php echo wp_get_attachment_image('303', 'medium'); ?>
+				<div>
+					<?php echo wp_get_attachment_image('311', 'medium'); ?>
+					<p>Достака или самовывоз готового изделия</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="container">
+	<?php get_section_header('отправить на заказ'); ?>
+	<div class="order-form-box mb-3">
+		<div class="form-and-button">
+			<div class="red-form inverted">
+				<form>
+					<input type="text" placeholder="Ваше имя">
+					<input type="text" placeholder="Почта">
+					<div class="input-wrap">
+						<label>Файл
+							<input type="file" placeholder="Файл">
+							<div>
+								<button>Выберите файл</button>
+								<span>Файл не выбран</span>
+							</div>
+						</label>
+					</div>
+					<div class="input-wrap">
+						<input type="text" placeholder="Бриф">
+						<small>Тираж, материал, сроки и т.д.</small>
+					</div>
+
+				</form>
+			</div>
+			<!-- <div class="mt-50"> -->
+			<?php get_zuzu_btn('Отправить', '#'); ?>
+			<!-- </div> -->
+		</div>
+		<?php echo wp_get_attachment_image('312', 'large'); ?>
+	</div>
+</section>
+
+<div class="map">
+	<?php echo wp_get_attachment_image('313', 'large'); ?>
+</div>
+
+<?php get_footer(); ?>

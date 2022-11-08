@@ -20,6 +20,8 @@ zuzu is distributed under the terms of the GNU GPL.
 :root {
 	--accent-gradient: linear-gradient(237.06deg, #FF8087 -9.77%, #D5120A 79.1%);
 	--black-gradient: linear-gradient(90deg, #232526 0%, #414345 100%);
+
+	--font-bigger: 1.25rem
 }
 
 /*
@@ -50,9 +52,9 @@ a {
 	color: initial;
 }
 
-a:hover,
-a:focus {
-	text-decoration-style: dashed;
+a:not(.zuzu-btn):hover,
+a:not(.zuzu-btn):focus {
+	color: red;
 }
 
 a:active {
@@ -134,10 +136,146 @@ h1 {
 	font-size: 30px;
 	text-transform: uppercase;
 	font-weight: 600;
+	margin-top: 4rem;
 }
 
 .zuzu-list {
 	margin-block: 3rem;
+}
+
+.grid-card {
+	background: var(--black-gradient);
+	border-radius: 5px;
+	color: white;
+	display: flex;
+
+	p {
+		font-size: 1rem;
+		font-weight: 400;
+	}
+
+	img {
+		border-radius: 5px;
+	}
+}
+
+.red-form {
+	clip-path: polygon(26% 0, 100% 0, 100% 100%, 0 100%, 0 21%);
+	width: 725px;
+	position: absolute;
+	top: 2rem;
+	right: -20%;
+	border: 5px solid transparent;
+
+	&.inverted {
+		clip-path: polygon(67% 0, 100% 24%, 100% 100%, 0 100%, 0 0);
+		position: static;
+
+		label {
+			font-weight: 501;
+			color: gray;
+			padding-left: 20px;
+		}
+	}
+
+	&::before {
+		content: "";
+		width: 105%;
+		height: 105%;
+		background: var(--accent-gradient);
+		display: inline-block;
+		position: absolute;
+		z-index: -1;
+		left: -10px;
+		top: -10px;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		background-color: white;
+		padding: 4rem 6rem;
+		color: #222;
+		font-size: 1rem;
+
+		input[type='text'] {
+			border: none;
+			border-bottom: 1px solid #222;
+			font-size: 1rem;
+			font-weight: 600;
+			padding: 20px;
+
+			&:focus-visible {
+				outline: none;
+			}
+
+			&::placeholder {
+				color: black;
+			}
+		}
+
+		input[type='file'] {
+			display: none;
+		}
+
+		#agreement-checkbox {
+			position: absolute;
+			z-index: -1;
+			opacity: 0;
+
+			&:checked+label::before {
+				border-color: #000000;
+				background-color: #ffffff;
+				background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNiAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEzLjA2ODcgMS4zMTg3NkMxMy4zMzEyIDEuMDU4NjQgMTMuNjg1NCAwLjkxMjI0OSAxNC4wNTQ5IDAuOTExMjNDMTQuNDI0NCAwLjkxMDIxIDE0Ljc3OTQgMS4wNTQ2NSAxNS4wNDMyIDEuMzEzMzFDMTUuMzA3MSAxLjU3MTk3IDE1LjQ1ODUgMS45MjQwOCAxNS40NjQ4IDIuMjkzNTFDMTUuNDcxMSAyLjY2Mjk0IDE1LjMzMTcgMy4wMiAxNS4wNzY5IDMuMjg3NTFMNy41OTE4NyAxMi42NDM4QzcuNDYzMjMgMTIuNzgyMyA3LjMwNzk3IDEyLjg5MzUgNy4xMzUzNyAxMi45NzA3QzYuOTYyNzcgMTMuMDQ3OSA2Ljc3NjM4IDEzLjA4OTUgNi41ODczNCAxMy4wOTNDNi4zOTgzMSAxMy4wOTY1IDYuMjEwNTEgMTMuMDYxOCA2LjAzNTE3IDEyLjk5MTFDNS44NTk4MyAxMi45MjAzIDUuNzAwNTYgMTIuODE1IDUuNTY2ODcgMTIuNjgxM0wwLjYwNzQ5OCA3LjcyMDAxQzAuNDY5MzM1IDcuNTkxMjcgMC4zNTg1MTkgNy40MzYwMSAwLjI4MTY1OSA3LjI2MzUyQzAuMjA0Nzk5IDcuMDkxMDIgMC4xNjM0NyA2LjkwNDggMC4xNjAxMzkgNi43MTU5OUMwLjE1NjgwNyA2LjUyNzE3IDAuMTkxNTQxIDYuMzM5NjEgMC4yNjIyNjggNi4xNjQ1MUMwLjMzMjk5NSA1Ljk4OTQxIDAuNDM4MjY2IDUuODMwMzUgMC41NzE4MDEgNS42OTY4MUMwLjcwNTMzNyA1LjU2MzI3IDAuODY0NCA1LjQ1OCAxLjAzOTUgNS4zODcyOEMxLjIxNDYxIDUuMzE2NTUgMS40MDIxNiA1LjI4MTgyIDEuNTkwOTggNS4yODUxNUMxLjc3OTggNS4yODg0OCAxLjk2NjAxIDUuMzI5ODEgMi4xMzg1MSA1LjQwNjY3QzIuMzExMDEgNS40ODM1MyAyLjQ2NjI2IDUuNTk0MzQgMi41OTUgNS43MzI1MUw2LjUyMTI1IDkuNjU2ODhMMTMuMDMzMSAxLjM2MDAxQzEzLjA0NDcgMS4zNDU0OCAxMy4wNTczIDEuMzMxNyAxMy4wNzA2IDEuMzE4NzZIMTMuMDY4N1oiIGZpbGw9IiMyMjIyMjIiLz4KPC9zdmc+Cg==)
+			}
+		}
+
+		#agreement-checkbox+label {
+			display: inline-flex;
+			align-items: center;
+			user-select: none;
+
+			&::before {
+				content: "";
+				display: inline-block;
+				width: 22px;
+				height: 22px;
+				flex-shrink: 0;
+				flex-grow: 0;
+				border: 2px solid #000;
+				border-radius: 0.25em;
+				margin-right: 0.5em;
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-size: 60% 60%;
+			}
+		}
+
+		.input-wrap {
+			display: flex;
+			flex-direction: column;
+
+			>label {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+
+				button {
+					background-color: #D9D9D9;
+					border: none;
+					cursor: pointer;
+					padding: 5px 1rem;
+					margin-right: .5rem;
+				}
+
+				span {
+					font-size: 14px;
+					font-weight: 400;
+				}
+			}
+		}
+	}
 }
 
 /*
@@ -167,12 +305,20 @@ h1 {
 	margin-top: 50px;
 }
 
+.mb-3 {
+	margin-block: 3rem;
+}
+
 /*
  * Header
  */
-
-header {
+header,
+footer {
 	padding-block: 3rem;
+
+	ul {
+		list-style: none;
+	}
 
 	>.container:first-child {
 		display: grid;
@@ -219,7 +365,7 @@ header {
 		}
 	}
 
-	.header-cta {
+	.cta {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
@@ -233,6 +379,9 @@ header {
 		}
 	}
 }
+
+
+header {}
 
 /*
  * Top menu.
@@ -380,84 +529,93 @@ header {
 			bottom: 2rem;
 		}
 	}
+}
 
-	.red-frame {
-		clip-path: polygon(26% 0, 100% 0, 100% 100%, 0 100%, 0 21%);
-		width: 725px;
-		position: absolute;
-		top: 2rem;
-		right: -20%;
-		border: 5px solid transparent;
+/*
+ * Grid with three cards.
+ */
+.grid-three {
+	display: grid;
+	grid-template-columns: 1.5fr 1fr;
+	grid-template-rows: repeat(2, 1fr);
+	gap: 2rem;
+	grid-auto-flow: column;
 
-		&::before {
-			content: "";
-			width: 105%;
-			height: 105%;
-			background: var(--accent-gradient);
-			display: inline-block;
-			position: absolute;
-			z-index: -1;
-			left: -10px;
-			top: -10px;
+	.grid-card {
+		&:nth-child(3) {
+			flex-direction: column-reverse;
+			align-items: center;
+			justify-content: stretch;
+			grid-row-start: 1;
+			grid-row-end: 3;
+			justify-content: space-between;
+
+			>div {
+				padding-inline: 1.5rem;
+				margin-bottom: 2.4rem;
+			}
 		}
 
-		form {
+		>div {
+			padding-top: 2.5rem;
+			padding-inline: 1.5rem;
+		}
+	}
+
+	p:first-child {
+		font-weight: 600;
+		font-size: var(--font-bigger);
+		margin-bottom: .8rem;
+	}
+}
+
+/*
+ * Grid with four cards (steps).
+ */
+.grid-four {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 3rem;
+
+	.grid-card {
+		>div {
 			display: flex;
-			flex-direction: column;
-			gap: 2rem;
-			background-color: white;
-			padding: 4rem 6rem;
-			color: #222;
-			font-size: 1rem;
-
-			input[type='text'] {
-				border: none;
-				border-bottom: 1px solid #222;
-				font-size: 1rem;
-				font-weight: 600;
-				padding: 20px;
-
-				&:focus-visible {
-					outline: none;
-				}
-
-				&::placeholder {
-					color: black;
-				}
-			}
-
-			#agreement-checkbox {
-				position: absolute;
-				z-index: -1;
-				opacity: 0;
-
-				&:checked+label::before {
-					border-color: #000000;
-					background-color: #ffffff;
-					background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNiAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEzLjA2ODcgMS4zMTg3NkMxMy4zMzEyIDEuMDU4NjQgMTMuNjg1NCAwLjkxMjI0OSAxNC4wNTQ5IDAuOTExMjNDMTQuNDI0NCAwLjkxMDIxIDE0Ljc3OTQgMS4wNTQ2NSAxNS4wNDMyIDEuMzEzMzFDMTUuMzA3MSAxLjU3MTk3IDE1LjQ1ODUgMS45MjQwOCAxNS40NjQ4IDIuMjkzNTFDMTUuNDcxMSAyLjY2Mjk0IDE1LjMzMTcgMy4wMiAxNS4wNzY5IDMuMjg3NTFMNy41OTE4NyAxMi42NDM4QzcuNDYzMjMgMTIuNzgyMyA3LjMwNzk3IDEyLjg5MzUgNy4xMzUzNyAxMi45NzA3QzYuOTYyNzcgMTMuMDQ3OSA2Ljc3NjM4IDEzLjA4OTUgNi41ODczNCAxMy4wOTNDNi4zOTgzMSAxMy4wOTY1IDYuMjEwNTEgMTMuMDYxOCA2LjAzNTE3IDEyLjk5MTFDNS44NTk4MyAxMi45MjAzIDUuNzAwNTYgMTIuODE1IDUuNTY2ODcgMTIuNjgxM0wwLjYwNzQ5OCA3LjcyMDAxQzAuNDY5MzM1IDcuNTkxMjcgMC4zNTg1MTkgNy40MzYwMSAwLjI4MTY1OSA3LjI2MzUyQzAuMjA0Nzk5IDcuMDkxMDIgMC4xNjM0NyA2LjkwNDggMC4xNjAxMzkgNi43MTU5OUMwLjE1NjgwNyA2LjUyNzE3IDAuMTkxNTQxIDYuMzM5NjEgMC4yNjIyNjggNi4xNjQ1MUMwLjMzMjk5NSA1Ljk4OTQxIDAuNDM4MjY2IDUuODMwMzUgMC41NzE4MDEgNS42OTY4MUMwLjcwNTMzNyA1LjU2MzI3IDAuODY0NCA1LjQ1OCAxLjAzOTUgNS4zODcyOEMxLjIxNDYxIDUuMzE2NTUgMS40MDIxNiA1LjI4MTgyIDEuNTkwOTggNS4yODUxNUMxLjc3OTggNS4yODg0OCAxLjk2NjAxIDUuMzI5ODEgMi4xMzg1MSA1LjQwNjY3QzIuMzExMDEgNS40ODM1MyAyLjQ2NjI2IDUuNTk0MzQgMi41OTUgNS43MzI1MUw2LjUyMTI1IDkuNjU2ODhMMTMuMDMzMSAxLjM2MDAxQzEzLjA0NDcgMS4zNDU0OCAxMy4wNTczIDEuMzMxNyAxMy4wNzA2IDEuMzE4NzZIMTMuMDY4N1oiIGZpbGw9IiMyMjIyMjIiLz4KPC9zdmc+Cg==)
-				}
-			}
-
-			#agreement-checkbox+label {
-				display: inline-flex;
-				align-items: center;
-				user-select: none;
-
-				&::before {
-					content: "";
-					display: inline-block;
-					width: 22px;
-					height: 22px;
-					flex-shrink: 0;
-					flex-grow: 0;
-					border: 2px solid #000;
-					border-radius: 0.25em;
-					margin-right: 0.5em;
-					background-repeat: no-repeat;
-					background-position: center center;
-					background-size: 60% 60%;
-				}
-			}
+			align-items: center;
+			gap: 1rem;
 		}
 	}
 }
+
+/*
+ * Order form.
+ */
+.order-form-box {
+	display: flex;
+	position: relative;
+
+	.form-and-button {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		a {
+			width: 50%;
+			margin-top: 3rem;
+		}
+	}
+}
+
+/*
+ * Map.
+ */
+.map {
+	img {
+		width: 100%;
+		object-fit: cover;
+	}
+}
+
+/*
+ * Footer.
+ */
+footer {}
