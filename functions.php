@@ -50,7 +50,34 @@ if (!function_exists('zuzu_styles')) :
 
 endif;
 
+if (!function_exists('zuzu_scripts')) :
+
+	/**
+	 * Enqueue scripts.
+	 *
+	 * @return void
+	 */
+	function zuzu_scripts()
+	{
+		// Register theme stylesheet.
+		$theme_version = wp_get_theme()->get('Version');
+
+		$version_string = is_string($theme_version) ? $theme_version : false;
+		wp_register_script(
+			'zuzu-script',
+			get_template_directory_uri() . '/assets/js/stickyNavbar.js',
+			array(),
+			$version_string
+		);
+
+		// Enqueue theme stylesheet.
+		wp_enqueue_script('zuzu-script');
+	}
+
+endif;
+
 add_action('wp_enqueue_scripts', 'zuzu_styles');
+add_action('wp_enqueue_scripts', 'zuzu_scripts');
 
 /**
  * Add new menus.

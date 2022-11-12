@@ -365,13 +365,18 @@ footer .cta p {
 /*
  * Top menu.
  */
+.top-menu {
+  background-color: #fff;
+  z-index: 10;
+  height: 60px;
+}
 .top-menu ul {
   display: flex;
   list-style: none;
   justify-content: space-between;
   padding: 0;
-  background-color: #fff;
-  margin-top: 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .top-menu ul > li {
   display: grid;
@@ -397,6 +402,20 @@ footer .cta p {
 }
 .top-menu ul > li.current-menu-item > a {
   color: #fff;
+}
+
+body.fixed-navbar {
+  margin-top: 60px;
+}
+body.fixed-navbar .top-menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0px 0px 1.6px rgba(0, 0, 0, 0.024), 0px 0px 4.4px rgba(0, 0, 0, 0.035), 0px 0px 10.6px rgba(0, 0, 0, 0.046), 0px 0px 35px rgba(0, 0, 0, 0.07);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  transition: 0.5s;
 }
 
 /*

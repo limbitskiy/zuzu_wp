@@ -380,20 +380,22 @@ footer {
 	}
 }
 
-
-header {}
-
 /*
  * Top menu.
  */
 .top-menu {
+	background-color: #fff;
+	z-index: 10;
+	height: 60px;
+
 	ul {
 		display: flex;
 		list-style: none;
 		justify-content: space-between;
 		padding: 0;
-		background-color: #fff;
-		margin-top: 0;
+		// background-color: #fff;
+		max-width: 1200px;
+		margin: 0 auto;
 
 		>li {
 			display: grid;
@@ -425,6 +427,25 @@ header {}
 				}
 			}
 		}
+	}
+}
+
+body.fixed-navbar {
+	margin-top: 60px;
+
+	.top-menu {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		box-shadow:
+			0px 0px 1.6px rgba(0, 0, 0, 0.024),
+			0px 0px 4.4px rgba(0, 0, 0, 0.035),
+			0px 0px 10.6px rgba(0, 0, 0, 0.046),
+			0px 0px 35px rgba(0, 0, 0, 0.07);
+		height: 80px;
+		display: flex;
+		align-items: center;
+		transition: .5s;
 	}
 }
 
