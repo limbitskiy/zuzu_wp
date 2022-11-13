@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The main template file
  *
@@ -15,8 +16,9 @@
  */
 
 get_header(); ?>
-
-<h1>Page</h1>
+<div class="container">
+    <h1>Page</h1>
+</div>
 
 <?php
 get_footer();

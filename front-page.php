@@ -1,21 +1,4 @@
-<?php
-
-/**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
- */
-
-get_header(); ?>
+<?php get_header(); ?>
 
 <section class="container" style="position: relative">
 	<div class="stanok-bg"><?php echo wp_get_attachment_image('282', 'large'); ?></div>
@@ -53,7 +36,7 @@ get_header(); ?>
 	<div class="container-small">
 		<?php get_section_header('Цены на фрезеровку в москве', 'white'); ?>
 
-		<div class="mt-50" style="display: flex; justify-content: space-between">
+		<div class="mt-50">
 			<?php get_zuzu_btn('Калькулятор', '#', 'medium'); ?>
 			<?php get_zuzu_btn('Прайс-лист', '#', 'medium', 'white'); ?>
 		</div>

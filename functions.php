@@ -20,6 +20,25 @@ function preconnect_google_fonts()
 
 add_action('wp_head', 'preconnect_google_fonts', 7);
 
+
+// add acf options page
+if (function_exists('acf_add_options_page')) {
+
+	acf_add_options_page(array(
+		'page_title' 	=> 'Options',
+		'menu_title'	=> 'Options',
+		'menu_slug' 	=> 'options',
+		'capability'	=> 'edit_posts',
+		'redirect'	=> false
+	));
+
+	// acf_add_options_sub_page(array(
+	// 	'page_title' 	=> 'Page 1',
+	// 	'menu_title'	=> 'Page 1',
+	// 	'parent_slug'	=> 'options',
+	// ));
+}
+
 if (!function_exists('zuzu_styles')) :
 
 	/**
@@ -64,14 +83,22 @@ if (!function_exists('zuzu_scripts')) :
 
 		$version_string = is_string($theme_version) ? $theme_version : false;
 		wp_register_script(
-			'zuzu-script',
+			'sticky-navbar',
 			get_template_directory_uri() . '/assets/js/stickyNavbar.js',
 			array(),
 			$version_string
 		);
 
+		wp_register_script(
+			'mobile-menu',
+			get_template_directory_uri() . '/assets/js/mobileMenu.js',
+			array('sticky-navbar'),
+			$version_string
+		);
+
 		// Enqueue theme stylesheet.
-		wp_enqueue_script('zuzu-script');
+		wp_enqueue_script('sticky-navbar');
+		wp_enqueue_script('mobile-menu');
 	}
 
 endif;
