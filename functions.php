@@ -12,6 +12,8 @@
 
 add_theme_support('post-thumbnails');
 
+add_theme_support('disable-layout-styles');
+
 function preconnect_google_fonts()
 {
 	echo '<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>' . "\r\n";
@@ -92,19 +94,44 @@ if (!function_exists('zuzu_scripts')) :
 		wp_register_script(
 			'mobile-menu',
 			get_template_directory_uri() . '/assets/js/mobileMenu.js',
-			array('sticky-navbar'),
+			array(),
+			$version_string
+		);
+
+		wp_register_script(
+			'feedback-form',
+			get_template_directory_uri() . '/assets/js/feedbackForm.js',
+			array(),
 			$version_string
 		);
 
 		// Enqueue theme stylesheet.
-		wp_enqueue_script('sticky-navbar');
-		wp_enqueue_script('mobile-menu');
+		// wp_enqueue_script('sticky-navbar');
+		// wp_enqueue_script('mobile-menu');
+		wp_enqueue_script('feedback-form');
 	}
 
 endif;
 
 add_action('wp_enqueue_scripts', 'zuzu_styles');
 add_action('wp_enqueue_scripts', 'zuzu_scripts');
+
+/**
+ * defer scripts
+ */
+function add_defer_attribute($tag, $handle)
+{
+	// add script handles to the array below
+	$scripts_to_defer = array('feedback-form');
+
+	foreach ($scripts_to_defer as $defer_script) {
+		if ($defer_script === $handle) {
+			return str_replace(' src', ' defer="defer" src', $tag);
+		}
+	}
+	return $tag;
+}
+add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
 
 /**
  * Add new menus.
@@ -150,6 +177,12 @@ function zuzu_the_html_classes()
 	}
 	echo 'class="' . esc_attr($classes) . '"';
 }
+
+/**
+ * Do not add inner__containers.
+ */
+remove_filter('render_block_core/group', 'wp_restore_group_inner_container', 10, 2);
+
 
 function pprint_r($a)
 {

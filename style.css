@@ -17,9 +17,9 @@ zuzu WordPress Theme, (C) 2021 WordPress.org
 zuzu is distributed under the terms of the GNU GPL.
 */
 :root {
-  --accent-gradient: linear-gradient(237.06deg, #FF8087 -9.77%, #D5120A 79.1%);
+  --accent-gradient: linear-gradient(237.06deg, #ff8087 -9.77%, #d5120a 79.1%);
   --black-gradient: linear-gradient(90deg, #232526 0%, #414345 100%);
-  --font-bigger: 1.25rem ;
+  --font-bigger: 1.25rem;
 }
 
 /*
@@ -58,13 +58,12 @@ a:active {
 
 p {
   margin: 0;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 16px;
 }
 
 h1 {
   font-size: clamp(1.8rem, 3.5vw, 50px);
-  margin-block: 3rem;
+  margin-block: 3rem 1.5rem;
   font-weight: 700;
 }
 
@@ -72,14 +71,15 @@ h2.section-header {
   font-size: clamp(1.4rem, 3.5vw, 30px);
   text-transform: uppercase;
   font-weight: 600;
-  margin-top: 4rem;
+  margin-block: 4rem 3rem;
+  text-align: center;
 }
 
 /*
  * General
  */
 .container {
-  max-width: 1200px;
+  max-width: 1200px !important;
   margin-inline: auto;
 }
 @media (max-width: 1200px) {
@@ -98,10 +98,17 @@ h2.section-header {
   }
 }
 
+section {
+  margin-block: 3rem;
+}
+section.section-with-bg {
+  margin: 0;
+  padding-block: 3rem;
+}
+
 .zuzu-btn {
   text-decoration: none;
   text-transform: uppercase;
-  color: #fff;
   display: inline-block;
   border-radius: 5px;
   white-space: nowrap;
@@ -125,10 +132,15 @@ h2.section-header {
 }
 .zuzu-btn.zuzu-btn-accent {
   background: var(--accent-gradient);
+  color: #fff !important;
 }
 .zuzu-btn.zuzu-btn-white {
   background-color: white;
   color: #222;
+}
+
+#hidden-load-file-btn {
+  display: none;
 }
 
 .hero-bg {
@@ -142,6 +154,7 @@ h2.section-header {
   position: absolute;
   right: -30%;
   top: -10%;
+  pointer-events: none;
 }
 @media (max-width: 1200px) {
   .stanok-bg {
@@ -194,8 +207,7 @@ h2.section-header {
 }
 .red-form.inverted label {
   font-weight: 501;
-  color: gray;
-  padding-left: 20px;
+  color: #222;
 }
 .red-form::before {
   content: "";
@@ -211,11 +223,12 @@ h2.section-header {
 .red-form form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   background-color: white;
   padding: 4rem 6rem;
   color: #222;
   font-size: 1rem;
+  min-height: 358px;
 }
 @media (max-width: 750px) {
   .red-form form {
@@ -224,11 +237,11 @@ h2.section-header {
   }
 }
 .red-form form input[type=text] {
-  border: none;
-  border-bottom: 1px solid #222;
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  font-weight: 400;
+  padding: 14px;
 }
 .red-form form input[type=text]:focus-visible {
   outline: none;
@@ -241,9 +254,6 @@ h2.section-header {
 }
 .red-form form input[type=text]::placeholder {
   color: black;
-}
-.red-form form input[type=file] {
-  display: none;
 }
 .red-form form #agreement-checkbox {
   position: absolute;
@@ -285,13 +295,23 @@ h2.section-header {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  pointer-events: none;
+}
+.red-form form .input-wrap > label > div {
+  height: 54px;
+  display: flex;
+  align-items: center;
+  padding-inline: 1rem;
 }
 .red-form form .input-wrap > label button {
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   border: none;
   cursor: pointer;
   padding: 5px 1rem;
   margin-right: 0.5rem;
+  pointer-events: all;
 }
 .red-form form .input-wrap > label span {
   font-size: 14px;
@@ -361,6 +381,13 @@ h2.section-header {
 }
 
 /*
+ * Sections.
+ */
+.first-section {
+  position: relative;
+}
+
+/*
  * Header
  */
 header.desktop-header,
@@ -406,11 +433,11 @@ footer.desktop-footer .contact-btns a {
 }
 header.desktop-header .contact-btns .contact-btn-telegram,
 footer.desktop-footer .contact-btns .contact-btn-telegram {
-  background: linear-gradient(276.34deg, #7ECCFF 9.61%, #4FA1E3 89.6%);
+  background: linear-gradient(276.34deg, #7eccff 9.61%, #4fa1e3 89.6%);
 }
 header.desktop-header .contact-btns .contact-btn-whatsapp,
 footer.desktop-footer .contact-btns .contact-btn-whatsapp {
-  background: linear-gradient(276.34deg, #96EF96 9.61%, #6CCE6C 89.6%);
+  background: linear-gradient(276.34deg, #96ef96 9.61%, #6cce6c 89.6%);
 }
 header.desktop-header .contact-btns .contact-btn-youtube,
 footer.desktop-footer .contact-btns .contact-btn-youtube {
@@ -526,20 +553,33 @@ body.fixed-navbar .top-menu {
 }
 
 /*
- * Gallery slider.
+ * First-section.
  */
-.gallery-slider {
-  display: flex;
-  gap: 1rem;
-  list-style: none;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 0;
+.first-section ul {
+  margin-block: 2rem;
 }
-.gallery-slider > li {
-  width: 185px;
-  height: 150px;
-  background-color: #222;
+.first-section p {
+  margin-block: 1rem;
+}
+.first-section .first-section-shorter-text {
+  max-width: 85%;
+}
+@media (max-width: 1200px) {
+  .first-section .first-section-shorter-text {
+    max-width: initial;
+  }
+}
+
+/*
+ * Mini-gallery section.
+ */
+.mini-gallery-section figure:first-of-type {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
+}
+.mini-gallery-section figure:first-of-type > figure img {
+  border: 1px solid grey;
   border-radius: 5px;
 }
 
@@ -550,7 +590,13 @@ body.fixed-navbar .top-menu {
   padding-block: 3rem;
   color: white;
 }
-.separator-block img {
+.separator-block.no-margin {
+  margin: 0;
+}
+.separator-block figure {
+  margin: 0;
+}
+.separator-block figure img {
   width: 30px;
   height: 30px;
 }
@@ -577,6 +623,9 @@ body.fixed-navbar .top-menu {
 .separator-block ul > li p:last-child {
   font-size: 12px;
   font-weight: 400;
+}
+.separator-block ul > li p:first-of-type {
+  text-transform: uppercase;
 }
 .separator-block.separator-red {
   background: var(--accent-gradient);
@@ -614,6 +663,29 @@ body.fixed-navbar .top-menu {
     -o-object-fit: cover;
        object-fit: cover;
   }
+}
+
+/*
+ * Prices section.
+ */
+.prices-section {
+  background: center/cover no-repeat url("https://zuzumaster.ru/wp-content/uploads/2022/11/calc-bg.png");
+}
+.prices-section table {
+  background-color: white;
+  width: 100%;
+  border-collapse: collapse;
+}
+.prices-section table th,
+.prices-section table td {
+  border: 1px solid black;
+  padding: 0.7rem;
+  text-align: center;
+}
+.prices-section table th {
+  font-weight: 600;
+  color: white;
+  background: var(--accent-gradient);
 }
 
 /*
@@ -675,9 +747,9 @@ body.fixed-navbar .top-menu {
 }
 
 /*
- * Grid with three cards.
+ * Grid section.
  */
-.grid-three {
+.grid-section .grid-three {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   grid-template-rows: repeat(2, 1fr);
@@ -685,16 +757,16 @@ body.fixed-navbar .top-menu {
   grid-auto-flow: column;
 }
 @media (max-width: 1050px) {
-  .grid-three {
+  .grid-section .grid-three {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     grid-auto-flow: row;
   }
 }
-.grid-three .grid-card {
+.grid-section .grid-three .grid-card {
   min-height: 195px;
 }
-.grid-three .grid-card > div {
+.grid-section .grid-three .grid-card > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -702,11 +774,11 @@ body.fixed-navbar .top-menu {
   margin-bottom: 1rem;
 }
 @media (max-width: 500px) {
-  .grid-three .grid-card > img {
+  .grid-section .grid-three .grid-card > img {
     display: none;
   }
 }
-.grid-three .grid-card:nth-child(3) {
+.grid-section .grid-three .grid-card:nth-child(3) {
   flex-direction: column-reverse;
   align-items: center;
   justify-content: stretch;
@@ -714,23 +786,23 @@ body.fixed-navbar .top-menu {
   grid-row-end: 3;
 }
 @media (max-width: 1050px) {
-  .grid-three .grid-card:nth-child(3) {
+  .grid-section .grid-three .grid-card:nth-child(3) {
     flex-direction: row;
     grid-row: auto;
   }
 }
 @media (max-width: 1050px) {
-  .grid-three .grid-card:nth-child(3) > img {
+  .grid-section .grid-three .grid-card:nth-child(3) > img {
     width: 210px;
     height: 165px;
     align-self: end;
   }
 }
-.grid-three .grid-card:nth-child(3) > div {
+.grid-section .grid-three .grid-card:nth-child(3) > div {
   padding-inline: 1.5rem;
   margin-bottom: 2rem;
 }
-.grid-three p:first-child {
+.grid-section .grid-three p:first-child {
   font-weight: 600;
   font-size: var(--font-bigger);
   margin-bottom: 0.8rem;
@@ -739,31 +811,46 @@ body.fixed-navbar .top-menu {
 /*
  * Grid with four cards (steps).
  */
-.grid-four {
+.grid-two {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem;
+  counter-reset: step;
 }
 @media (max-width: 1200px) {
-  .grid-four {
+  .grid-two {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 }
-@media (max-width: 500px) {
-  .grid-four .grid-card {
-    min-height: 130px;
-  }
-}
-.grid-four .grid-card > div {
-  display: flex;
+.grid-two .grid-card {
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
+  padding: 2rem;
 }
-@media (max-width: 500px) {
-  .grid-four .grid-card > img {
-    display: none;
+@media (max-width: 1200px) {
+  .grid-two .grid-card {
+    padding: 2rem 1rem;
+    gap: 1rem;
   }
+}
+.grid-two .grid-card figure {
+  margin: 0;
+  position: relative;
+  width: 100px;
+}
+.grid-two .grid-card figure:after {
+  counter-increment: step;
+  content: counter(step);
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+}
+.grid-two .grid-card p {
+  width: 100%;
 }
 
 /*

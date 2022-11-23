@@ -31,7 +31,7 @@
 
 		<?php get_template_part('template-parts/header/site-header'); ?>
 
-		<?php wp_nav_menu(array('theme_location' => 'top-menu', 'container_class' => 'top-menu')); ?>
+		<!-- <?php wp_nav_menu(array('theme_location' => 'top-menu', 'container_class' => 'top-menu')); ?> -->
 
 		<div id="content" class="site-content">
 			<div id="primary" class="content-area">

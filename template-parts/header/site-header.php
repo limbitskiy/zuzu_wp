@@ -13,7 +13,7 @@ $wrapper_classes .= has_custom_logo() ? ' has-logo' : '';
 $wrapper_classes .= (true === get_theme_mod('display_title_and_tagline', true)) ? ' has-title-and-tagline' : '';
 $wrapper_classes .= has_nav_menu('primary') ? ' has-menu' : '';
 ?>
-<div class="mobile-menu hidden">
+<!-- <div class="mobile-menu hidden">
 	<div class="container">
 		<span class="close-mobile-menu"><?php echo wp_get_attachment_image('338'); ?></span>
 		<?php wp_nav_menu(array('theme_location' => 'top-menu')); ?>
@@ -23,7 +23,7 @@ $wrapper_classes .= has_nav_menu('primary') ? ' has-menu' : '';
 <header id="masthead" class="<?php echo esc_attr($wrapper_classes); ?> mobile-header">
 	<div class="site-logo"><?php the_custom_logo(); ?></div>
 	<span class="mobile-menu-open"><?php echo wp_get_attachment_image('337'); ?></span>
-</header><!-- #masthead -->
+</header>#masthead -->
 
 <header id="masthead" class="<?php echo esc_attr($wrapper_classes); ?> desktop-header">
 
