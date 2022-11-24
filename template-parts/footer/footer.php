@@ -9,7 +9,7 @@
  */
 ?>
 
-<footer class="desktop-footer">
+<footer class="desktop-footer" style="background: center / cover no-repeat url('<?php echo wp_get_attachment_image_url('495', 'large'); ?>')">
     <div class="container">
 
         <div class="site-logo"><?php the_custom_logo(); ?></div>
@@ -34,12 +34,12 @@
                 <a class="contact-btn-youtube" href="<?php echo esc_url(get_field('youtube', 'option')); ?>"><?php echo wp_get_attachment_image('247', [25, 25]); ?></a>
             </div>
         </div>
-        <div>
+        <!-- <div>
             <?php wp_nav_menu(array('theme_location' => 'footer-services', 'container_class' => 'footer-services')); ?>
         </div>
         <div>
             <?php wp_nav_menu(array('theme_location' => 'footer-extra-links', 'container_class' => 'footer-extra-links')); ?>
             <?php get_zuzu_btn('Заказать звонок', '#', 'small'); ?>
-        </div>
+        </div> -->
     </div>
 </footer>

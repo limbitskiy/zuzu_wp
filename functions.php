@@ -105,10 +105,18 @@ if (!function_exists('zuzu_scripts')) :
 			$version_string
 		);
 
+		wp_register_script(
+			'callback-form',
+			get_template_directory_uri() . '/assets/js/callbackForm.js',
+			array(),
+			$version_string
+		);
+
 		// Enqueue theme stylesheet.
 		// wp_enqueue_script('sticky-navbar');
 		// wp_enqueue_script('mobile-menu');
 		wp_enqueue_script('feedback-form');
+		wp_enqueue_script('callback-form');
 	}
 
 endif;
@@ -122,7 +130,7 @@ add_action('wp_enqueue_scripts', 'zuzu_scripts');
 function add_defer_attribute($tag, $handle)
 {
 	// add script handles to the array below
-	$scripts_to_defer = array('feedback-form');
+	$scripts_to_defer = array('feedback-form', 'callback-form');
 
 	foreach ($scripts_to_defer as $defer_script) {
 		if ($defer_script === $handle) {

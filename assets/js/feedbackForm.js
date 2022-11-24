@@ -14,9 +14,22 @@ let file = null;
 const onSendFeedback = (event) => {
   event.preventDefault();
 
-  const name = nameInput.value;
-  const phoneNumber = phoneNumberInput.value;
-  const commentary = commentaryInput.value;
+  let name = nameInput.value;
+  let phoneNumber = phoneNumberInput.value;
+  let commentary = commentaryInput.value;
+
+  if (!name || !phoneNumber) {
+    alert("Вы не заполнили все необходимые поля");
+
+    if (!name) {
+      nameInput.classList.add("not-validated");
+    }
+
+    if (!phoneNumber) {
+      phoneNumberInput.classList.add("not-validated");
+    }
+    return;
+  }
 
   let formData = new FormData();
   formData.append("name", name);
@@ -27,7 +40,20 @@ const onSendFeedback = (event) => {
   fetch("mail.php", {
     method: "post",
     body: formData,
-  }).then(() => alert("Спасибо! Ваше письмо отправлено нашим менеджерам."));
+  }).then(() => {
+    nameInput.value = "";
+    phoneNumberInput.value = "";
+    commentaryInput.value = "";
+    fileDesc.textContent = "";
+    nameInput.classList.remove("not-validated");
+    phoneNumberInput.classList.remove("not-validated");
+
+    setTimeout(() => {
+      alert(
+        "Спасибо за обращение в компанию ZuzuMaster! Ваше письмо будет рассмотрено в кратчайшие сроки. Менеджер свяжется с вами в ближайшее время."
+      );
+    }, 100);
+  });
 };
 
 const onLoadFile = (event) => {
