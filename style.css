@@ -171,6 +171,7 @@ form.order-form {
     padding: 2rem 3rem;
   }
 }
+form.order-form input[type=tel],
 form.order-form input[type=text] {
   border: 1px solid lightgrey;
   border-radius: 5px;
@@ -178,15 +179,17 @@ form.order-form input[type=text] {
   font-weight: 400;
   padding: 14px;
 }
+form.order-form input[type=tel]:focus-visible,
 form.order-form input[type=text]:focus-visible {
   outline: none;
 }
-form.order-form input[type=text]::-moz-placeholder {
+form.order-form input[type=tel]::-moz-placeholder, form.order-form input[type=text]::-moz-placeholder {
   color: black;
 }
-form.order-form input[type=text]:-ms-input-placeholder {
+form.order-form input[type=tel]:-ms-input-placeholder, form.order-form input[type=text]:-ms-input-placeholder {
   color: black;
 }
+form.order-form input[type=tel]::placeholder,
 form.order-form input[type=text]::placeholder {
   color: black;
 }

@@ -68,7 +68,7 @@
             <label>Ваше имя:<sup class="asterisk">*</sup></label>
             <input type="text" id="callback-name">
             <label>Ваш телефон:<sup class="asterisk">*</sup></label>
-            <input type="text" id="callback-phone-number">
+            <input type="tel" id="callback-phone-number" value="+7">
         </form>
         <div class="text-center">
             <?php get_zuzu_btn('Отправить', '#', 'medium'); ?>

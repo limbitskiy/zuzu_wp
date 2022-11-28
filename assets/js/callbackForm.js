@@ -5,6 +5,8 @@ const sendCallbackBtn = overlay.querySelector(".zuzu-btn");
 const callbackName = overlay.querySelector("#callback-name");
 const callbackPhone = overlay.querySelector("#callback-phone-number");
 
+let phoneNumber = callbackPhone.value;
+
 const onSendCallbackForm = (event) => {
   event.preventDefault();
 
@@ -32,11 +34,7 @@ const onSendCallbackForm = (event) => {
     method: "post",
     body: formData,
   }).then(() => {
-    callbackName.value = "";
-    callbackPhone.value = "";
-    callbackName.classList.remove("not-validated");
-    callbackPhone.classList.remove("not-validated");
-    document.body.classList.remove("no-overflow");
+    eraseInputData();
     overlay.classList.add("hidden");
     setTimeout(() => {
       alert(
@@ -44,6 +42,15 @@ const onSendCallbackForm = (event) => {
       );
     }, 100);
   });
+};
+
+const eraseInputData = () => {
+  callbackName.value = "";
+  callbackPhone.value = "+7";
+  phoneNumber = callbackPhone.value;
+  callbackName.classList.remove("not-validated");
+  callbackPhone.classList.remove("not-validated");
+  document.body.classList.remove("no-overflow");
 };
 
 const onOpenForm = (event) => {
@@ -54,10 +61,25 @@ const onOpenForm = (event) => {
 };
 
 const onCloseForm = (event) => {
+  eraseInputData();
   document.body.classList.remove("no-overflow");
   overlay.classList.add("hidden");
+};
+
+const formatPhoneNumber = (input) => {
+  if (/\d/.test(input) && phoneNumber.length < 12) {
+    phoneNumber += input;
+  } else if (input === null && phoneNumber.length > 2) {
+    phoneNumber = phoneNumber.slice(0, -1);
+  }
+  return phoneNumber;
+};
+
+const onPhoneNumberChange = (event) => {
+  callbackPhone.value = formatPhoneNumber(event.data);
 };
 
 callbackButton.addEventListener("click", onOpenForm);
 closeDialog.addEventListener("click", onCloseForm);
 sendCallbackBtn.addEventListener("click", onSendCallbackForm);
+callbackPhone.addEventListener("input", onPhoneNumberChange);
