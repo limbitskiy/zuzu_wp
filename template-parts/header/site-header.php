@@ -22,9 +22,17 @@ $wrapper_classes .= has_nav_menu('primary') ? ' has-menu' : '';
 
 <header id="masthead" class="<?php echo esc_attr($wrapper_classes); ?> mobile-header">
 	<div class="site-logo mobile-header-logo"><?php the_custom_logo(); ?></div>
-	<div>
-		<?php echo wp_get_attachment_image('248', [25, 25]); ?>
-		<p><?php the_field('telephone', 'option'); ?></p>
+	<p class="header-seo-text"><?php the_field('short_adress', 'option'); ?></p>
+	<div class="mobile-header-contacts">
+		<div>
+			<?php echo wp_get_attachment_image('248', [25, 25]); ?>
+			<p><?php the_field('telephone', 'option'); ?></p>
+		</div>
+
+		<div>
+			<?php echo wp_get_attachment_image('249', [25, 25]); ?>
+			<p><?php the_field('mail', 'option'); ?></p>
+		</div>
 	</div>
 	<!-- <span class="mobile-menu-open"><?php echo wp_get_attachment_image('337'); ?></span> -->
 </header>

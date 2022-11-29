@@ -14,6 +14,8 @@ add_theme_support('post-thumbnails');
 
 add_theme_support('disable-layout-styles');
 
+add_theme_support('title-tag');
+
 function preconnect_google_fonts()
 {
 	echo '<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>' . "\r\n";
@@ -112,11 +114,27 @@ if (!function_exists('zuzu_scripts')) :
 			$version_string
 		);
 
+		wp_register_script(
+			'bitrix-widget',
+			'https://cdn-ru.bitrix24.ru/b18415984/crm/site_button/loader_2_ejlp9h.js',
+			array(),
+			$version_string
+		);
+
+		wp_register_script(
+			'hide-bitrix-widget',
+			get_template_directory_uri() . '/assets/js/hide-bitrix-widget.js',
+			array(),
+			$version_string
+		);
+
 		// Enqueue theme stylesheet.
 		// wp_enqueue_script('sticky-navbar');
 		// wp_enqueue_script('mobile-menu');
 		wp_enqueue_script('feedback-form');
 		wp_enqueue_script('callback-form');
+		wp_enqueue_script('bitrix-widget');
+		wp_enqueue_script('hide-bitrix-widget');
 	}
 
 endif;
@@ -130,7 +148,7 @@ add_action('wp_enqueue_scripts', 'zuzu_scripts');
 function add_defer_attribute($tag, $handle)
 {
 	// add script handles to the array below
-	$scripts_to_defer = array('feedback-form', 'callback-form');
+	$scripts_to_defer = array('feedback-form', 'callback-form', 'bitrix-widget', 'hide-bitrix-widget');
 
 	foreach ($scripts_to_defer as $defer_script) {
 		if ($defer_script === $handle) {
