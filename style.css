@@ -68,6 +68,7 @@ a:active {
 p {
   margin: 0;
   font-size: 16px;
+  line-height: 1.4;
 }
 
 h1 {
@@ -82,6 +83,11 @@ h2.section-header {
   font-weight: 600;
   margin-block: 4rem 3rem;
   text-align: center;
+}
+@media (max-width: 1000px) {
+  h2.section-header {
+    margin-block: 2rem 1rem;
+  }
 }
 
 /*
@@ -113,6 +119,10 @@ h2.section-header {
 
 .bx-livechat-position-bottom-right {
   right: 0 !important;
+}
+
+.red-link {
+  color: #d5120a;
 }
 
 .not-validated {
@@ -155,7 +165,7 @@ section.section-with-bg {
 }
 @media (max-width: 500px) {
   .zuzu-btn.zuzu-btn-large {
-    padding: 1.5em;
+    padding: 1em 3em;
     max-width: 100%;
   }
 }
@@ -560,6 +570,9 @@ header.mobile-header .mobile-header-contacts img {
   height: 20px;
 }
 
+footer.desktop-footer {
+  margin-top: 0.5rem;
+}
 footer.desktop-footer > .container:first-of-type {
   display: block;
 }
@@ -755,6 +768,14 @@ body.fixed-navbar .top-menu {
   flex-wrap: nowrap;
   gap: 2rem;
 }
+@media (max-width: 768px) {
+  .mini-gallery-section figure:first-of-type {
+    flex-direction: column;
+  }
+  .mini-gallery-section figure:first-of-type > figure {
+    width: 100% !important;
+  }
+}
 .mini-gallery-section figure:first-of-type > figure img {
   border: 1px solid grey;
   border-radius: 5px;
@@ -786,7 +807,7 @@ body.fixed-navbar .top-menu {
     max-width: -webkit-fit-content;
     max-width: -moz-fit-content;
     max-width: fit-content;
-    gap: 1rem;
+    gap: 2.5rem;
   }
 }
 .separator-block ul > li {
@@ -800,6 +821,7 @@ body.fixed-navbar .top-menu {
 }
 .separator-block ul > li p:first-of-type {
   text-transform: uppercase;
+  font-weight: 500;
 }
 .separator-block.separator-red {
   background: var(--accent-gradient);
@@ -863,10 +885,18 @@ body.fixed-navbar .top-menu {
   padding: 0.7rem;
   text-align: center;
 }
-.prices-section table th {
-  font-weight: 600;
+.prices-section table tr:nth-child(-n+2) {
+  background-color: #e02e29;
   color: white;
-  background: var(--accent-gradient);
+  font-weight: 600;
+}
+@media (max-width: 440px) {
+  .prices-section table p {
+    font-size: 12px !important;
+  }
+  .prices-section table td {
+    padding-inline: 0.4rem;
+  }
 }
 
 /*
@@ -1091,13 +1121,10 @@ body.fixed-navbar .top-menu {
  * Map.
  */
 .map {
-  margin-bottom: 0;
-}
-.map img {
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  box-shadow: 0 0 11px 0px rgba(0, 0, 0, 0.3);
+  height: 300px;
+  margin-bottom: 0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 
 /*

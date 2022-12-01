@@ -25,12 +25,12 @@
                     <input type="text" id="name">
                     <label>Телефон:<sup class="asterisk">*</sup></label>
                     <input type="text" id="phoneNumber">
-                    <label>Файл:</label>
+                    <label>Файл(ы):</label>
                     <div class="input-wrap">
                         <label id="upload-file">
                             <div>
-                                <button id="load-file-btn">Выберите файл</button>
-                                <span id="file-desc">(jpg, jpeg, png)</span>
+                                <button id="load-file-btn">Выберите файл(ы)</button>
+                                <span id="file-desc">Файлов прикреплено: 0</span>
                             </div>
                         </label>
                     </div>
@@ -47,11 +47,10 @@
             <?php get_zuzu_btn('Отправить', '#'); ?>
         </div>
     </div>
-    <input id="hidden-load-file-btn" name="file" type="file" accept=".jpg, .jpeg, .png">
+    <input id="hidden-load-file-btn" name="file[]" type="file" accept=".jpg, .jpeg, .png, .dxf, .dwg, .eps, .svg, .ai, .cdr, .pdf, .bmp, .tiff, .stl, .obj, .fbx, .step, .stp, .igs, .iges, .x_t" multiple>
 </section>
 
-<section class="map">
-    <?php echo wp_get_attachment_image('497', 'large'); ?>
+<section class="map" id="map">
 </section>
 
 </main><!-- #main -->

@@ -3,13 +3,9 @@ const form = document.querySelector("#feedback-form");
 const hiddenBtn = document.querySelector("#hidden-load-file-btn");
 const loadFileBtn = document.querySelector("#load-file-btn");
 const fileDesc = document.querySelector("#file-desc");
-
 const nameInput = form.querySelector("#name");
 const phoneNumberInput = form.querySelector("#phoneNumber");
-// const file = form.querySelector('#phoneNumber')
 const commentaryInput = form.querySelector("#commentary");
-
-let file = null;
 
 const onSendFeedback = (event) => {
   event.preventDefault();
@@ -34,7 +30,9 @@ const onSendFeedback = (event) => {
   let formData = new FormData();
   formData.append("name", name);
   formData.append("phoneNumber", phoneNumber);
-  formData.append("file", file);
+  [...hiddenBtn.files].forEach((file) => {
+    formData.append("file[]", file);
+  });
   formData.append("commentary", commentary);
 
   fetch("mail.php", {
@@ -62,8 +60,8 @@ const onLoadFile = (event) => {
 };
 
 const onLoadFileChange = (event) => {
-  fileDesc.textContent = event.target.files[0].name;
-  file = event.target.files[0];
+  const files = [...hiddenBtn.files];
+  fileDesc.textContent = `Файлов прикреплено: ${files.length}`;
 };
 
 loadFileBtn.addEventListener("click", onLoadFile);
