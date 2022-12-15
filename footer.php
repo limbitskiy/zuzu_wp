@@ -18,11 +18,10 @@
     <div class="container">
         <?php get_section_header('отправить на заказ'); ?>
         <div class="order-form-box mb-3">
-            <!-- <div class="form-and-button"> -->
-            <div class="red-form inverted">
+            <div class="red-form" style="--top-right: 60px">
                 <form id="feedback-form" class="order-form">
                     <label>Ваше имя:<sup class="asterisk">*</sup></label>
-                    <input type="text" id="name">
+                    <input type="text" id="name" autofocus>
                     <label>Телефон:<sup class="asterisk">*</sup></label>
                     <input type="text" id="phoneNumber">
                     <label>Файл(ы):</label>
@@ -35,12 +34,9 @@
                         </label>
                     </div>
                     <label>Комментарий:</label>
-                    <input type="text" id="commentary">
+                    <textarea type="text" id="commentary" rows="4" maxlength="500"></textarea>
                 </form>
             </div>
-            <!-- <div class="mt-50"> -->
-            <!-- </div> -->
-            <!-- </div> -->
             <?php echo wp_get_attachment_image('312', 'large'); ?>
         </div>
         <div class="text-center">

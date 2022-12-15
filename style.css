@@ -145,6 +145,11 @@ section.section-with-bg {
   padding-block: 3rem;
 }
 
+.custom-logo {
+  width: 100px;
+  height: auto;
+}
+
 .zuzu-btn {
   text-decoration: none;
   text-transform: uppercase;
@@ -153,6 +158,11 @@ section.section-with-bg {
   white-space: nowrap;
   text-align: center;
   font-weight: 600;
+}
+@media (max-width: 500px) {
+  .zuzu-btn {
+    white-space: initial;
+  }
 }
 .zuzu-btn.zuzu-btn-small {
   padding: 1em 2em;
@@ -182,7 +192,7 @@ form.order-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background-color: white;
+  background-color: transparent;
   padding: 4rem 6rem;
   color: #222;
   font-size: 1rem;
@@ -194,6 +204,7 @@ form.order-form {
     padding: 2rem 3rem;
   }
 }
+form.order-form textarea,
 form.order-form input[type=tel],
 form.order-form input[type=text] {
   border: 1px solid lightgrey;
@@ -202,16 +213,18 @@ form.order-form input[type=text] {
   font-weight: 400;
   padding: 14px;
 }
+form.order-form textarea:focus-visible,
 form.order-form input[type=tel]:focus-visible,
 form.order-form input[type=text]:focus-visible {
   outline: none;
 }
-form.order-form input[type=tel]::-moz-placeholder, form.order-form input[type=text]::-moz-placeholder {
+form.order-form textarea::-moz-placeholder, form.order-form input[type=tel]::-moz-placeholder, form.order-form input[type=text]::-moz-placeholder {
   color: black;
 }
-form.order-form input[type=tel]:-ms-input-placeholder, form.order-form input[type=text]:-ms-input-placeholder {
+form.order-form textarea:-ms-input-placeholder, form.order-form input[type=tel]:-ms-input-placeholder, form.order-form input[type=text]:-ms-input-placeholder {
   color: black;
 }
+form.order-form textarea::placeholder,
 form.order-form input[type=tel]::placeholder,
 form.order-form input[type=text]::placeholder {
   color: black;
@@ -321,17 +334,21 @@ form.order-form .input-wrap > label span {
 }
 
 .red-form {
-  -webkit-clip-path: polygon(26% 0, 100% 0, 100% 100%, 0 100%, 0 21%);
-          clip-path: polygon(26% 0, 100% 0, 100% 100%, 0 100%, 0 21%);
+  --all: 0px;
+  --b: #d6140c;
+  display: inline-block;
+  margin: 10px;
+  border: 5px solid var(--b);
+  background: linear-gradient(135deg, var(--b) 0 calc(var(--top-left, var(--all)) + 5px), transparent 0) top left/50% 50%, linear-gradient(-135deg, var(--b) 0 calc(var(--top-right, var(--all)) + 5px), transparent 0) top right/50% 50%, var(--img, white);
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  -webkit-mask: linear-gradient(45deg, transparent 0 var(--bottom-left, var(--all)), #fff 0) bottom left, linear-gradient(-45deg, transparent 0 var(--bottom-right, var(--all)), #fff 0) bottom right, linear-gradient(135deg, transparent 0 var(--top-left, var(--all)), #fff 0) top left, linear-gradient(-135deg, transparent 0 var(--top-right, var(--all)), #fff 0) top right;
+  -webkit-mask-size: 50.5% 50.5%;
+  -webkit-mask-repeat: no-repeat;
   width: 725px;
-  position: absolute;
-  top: 2rem;
-  right: -20%;
-  border: 5px solid transparent;
 }
 @media (max-width: 1280px) {
   .red-form {
-    position: static;
     margin-inline: auto;
   }
 }
@@ -339,26 +356,6 @@ form.order-form .input-wrap > label span {
   .red-form {
     width: 97%;
   }
-}
-.red-form.inverted {
-  -webkit-clip-path: polygon(67% 0, 100% 24%, 100% 100%, 0 100%, 0 0);
-          clip-path: polygon(67% 0, 100% 24%, 100% 100%, 0 100%, 0 0);
-  position: static;
-}
-.red-form.inverted label {
-  font-weight: 501;
-  color: #222;
-}
-.red-form::before {
-  content: "";
-  width: 100%;
-  height: 105%;
-  background: var(--accent-gradient);
-  display: inline-block;
-  position: absolute;
-  z-index: -1;
-  left: -10px;
-  top: -10px;
 }
 
 .mobile-menu {
@@ -395,7 +392,8 @@ form.order-form .input-wrap > label span {
 
 .overlay {
   position: absolute;
-  inset: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
   display: grid;
   place-items: center;
@@ -532,7 +530,7 @@ header.desktop-header > .container:first-child .cta,
 footer.desktop-footer > .container:first-child .cta {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.9rem;
 }
 header.desktop-header > .container:first-child .cta > *,
 footer.desktop-footer > .container:first-child .cta > * {
@@ -560,6 +558,12 @@ header.mobile-header .mobile-header-contacts {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+@media (max-width: 500px) {
+  header.mobile-header .mobile-header-contacts {
+    flex-direction: initial;
+    flex-wrap: wrap;
+  }
 }
 header.mobile-header .mobile-header-contacts > * {
   display: flex;
@@ -671,8 +675,14 @@ header.mobile-header {
   border-bottom: 2px solid #ed0101;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
+@media (max-width: 500px) {
+  header.mobile-header {
+    justify-content: initial;
+    gap: 6%;
+  }
+}
 header.mobile-header .site-logo img {
-  height: 40px;
+  width: 23px;
   margin-left: 1rem;
 }
 @media (max-width: 500px) {
@@ -867,6 +877,11 @@ body.fixed-navbar .top-menu {
 .steps-section {
   margin-bottom: 8rem;
 }
+@media (max-width: 998px) {
+  .steps-section {
+    margin-bottom: 5rem;
+  }
+}
 
 /*
  * Prices section.
@@ -975,7 +990,7 @@ body.fixed-navbar .top-menu {
   }
 }
 .grid-section .grid-three .grid-card {
-  min-height: 195px;
+  min-height: 198px;
 }
 .grid-section .grid-three .grid-card > figure {
   margin: 0;

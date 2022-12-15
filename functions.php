@@ -16,6 +16,8 @@ add_theme_support('disable-layout-styles');
 
 add_theme_support('title-tag');
 
+add_theme_support('custom-logo');
+
 function preconnect_google_fonts()
 {
 	echo '<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>' . "\r\n";

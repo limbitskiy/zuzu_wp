@@ -24,15 +24,15 @@ $wrapper_classes .= has_nav_menu('primary') ? ' has-menu' : '';
 	<div class="site-logo mobile-header-logo"><?php the_custom_logo(); ?></div>
 	<p class="header-seo-text"><?php the_field('short_adress', 'option'); ?></p>
 	<div class="mobile-header-contacts">
-		<div>
-			<?php echo wp_get_attachment_image('248', [25, 25]); ?>
+		<a href="tel:+7 (985) 164-83-00">
+			<?php echo wp_get_attachment_image('527', [25, 25]); ?>
 			<p><?php the_field('telephone', 'option'); ?></p>
-		</div>
+		</a>
 
-		<div>
-			<?php echo wp_get_attachment_image('249', [25, 25]); ?>
+		<a href="mailto:zuzumaster@yandex.ru">
+			<?php echo wp_get_attachment_image('528', [25, 25]); ?>
 			<p><?php the_field('mail', 'option'); ?></p>
-		</div>
+		</a>
 	</div>
 	<!-- <span class="mobile-menu-open"><?php echo wp_get_attachment_image('337'); ?></span> -->
 </header>

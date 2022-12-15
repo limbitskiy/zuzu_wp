@@ -1,17 +1,24 @@
-const callbackButton = document.querySelector(".desktop-header .zuzu-btn");
+const callbackButtonHeader = document.querySelector(
+  ".desktop-header .zuzu-btn"
+);
+const callbackButtonFooter = document.querySelectorAll(
+  ".desktop-footer .zuzu-btn"
+);
+const callbackBtnArray = [callbackButtonHeader, ...callbackButtonFooter];
+
 const overlay = document.querySelector("#overlay");
 const closeDialog = overlay.querySelector(".close-dialog");
 const sendCallbackBtn = overlay.querySelector(".zuzu-btn");
 const callbackName = overlay.querySelector("#callback-name");
 const callbackPhone = overlay.querySelector("#callback-phone-number");
 
-let phoneNumber = callbackPhone.value;
+let phoneNumber = 0;
 
 const onSendCallbackForm = (event) => {
   event.preventDefault();
 
   let name = callbackName.value;
-  let phoneNumber = callbackPhone.value;
+  // let phoneNumber = callbackPhone.value;
 
   if (!name || !phoneNumber) {
     alert("Вы не заполнили все поля");
@@ -38,7 +45,7 @@ const onSendCallbackForm = (event) => {
     overlay.classList.add("hidden");
     setTimeout(() => {
       alert(
-        "Спасибо за обращение в компанию ZuzuMaster! Ваше письмо будет рассмотрено в кратчайшие сроки. Менеджер свяжется с вами в ближайшее время."
+        "Спасибо за обращение в компанию ZuzuMaster! Менеджер свяжется с Вами в ближайшее время."
       );
     }, 100);
   });
@@ -57,6 +64,7 @@ const onOpenForm = (event) => {
   event.preventDefault();
 
   document.body.classList.add("no-overflow");
+  overlay.style.top = window.scrollY + "px";
   overlay.classList.remove("hidden");
 };
 
@@ -79,7 +87,9 @@ const onPhoneNumberChange = (event) => {
   callbackPhone.value = formatPhoneNumber(event.data);
 };
 
-callbackButton.addEventListener("click", onOpenForm);
+callbackBtnArray.forEach((button) => {
+  button.addEventListener("click", onOpenForm);
+});
 closeDialog.addEventListener("click", onCloseForm);
 sendCallbackBtn.addEventListener("click", onSendCallbackForm);
 callbackPhone.addEventListener("input", onPhoneNumberChange);
